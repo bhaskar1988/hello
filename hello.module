@@ -1,0 +1,33 @@
+<?php
+use Drupal\node\Entity\Node;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\Request;
+use \Drupal\Core\Url;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\Core\Form\ConfigFormBase;
+
+
+function hello_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'system_site_information_settings') {
+  $apisitekey = \Drupal::config('system.site')->get('apisitekey'); 
+  $form['site_information']['site_apisitekey'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Title',
+    '#default_value' => !empty($apisitekey) ? $apisitekey : 'Site Api Key',
+    );
+  if(!empty($apisitekey))
+    $form['actions']['submit']['#value'] = 'Update Configuration';
+    $form['actions']['submit']['#submit'][] = 'hello_form_submit';
+  }
+}
+
+function hello_form_submit(array &$form, FormStateInterface $form_state){
+  \Drupal::configFactory()->getEditable('system.site')
+    ->set('apisitekey',$form_state->getValue('site_apisitekey'))
+    ->save();           
+}
+
+
+
+?>

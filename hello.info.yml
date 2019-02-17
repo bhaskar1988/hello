@@ -1,0 +1,4 @@
+name: Hello
+description: This is test module.
+type: module
+core: 8.x
