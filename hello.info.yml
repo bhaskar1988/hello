@@ -1,4 +1,9 @@
-name: Hello
-description: This is test module.
+name: hello
 type: module
-core: 8.x
+description: 'Hello Iam going to alter Site Information.'
+package: custom
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:rest
+  - drupal:restui
+

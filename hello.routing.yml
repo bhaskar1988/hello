@@ -1,8 +1,0 @@
-hello.content:
-  path: '/hello/{node1}'
-  defaults: 
-    _controller: '\Drupal\hello\Controller\HelloController::description' 
-    _title: 'Hello World'
-  requirements: 
-    _permission: 'access content'
-  

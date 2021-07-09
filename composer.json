@@ -1,0 +1,9 @@
+{
+    "name": "drupal/hello",
+    "description": "Enables the creation of Rest API for node.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/restui": "^1.20"
+    }
+}
